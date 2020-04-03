@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Use ul/ol tag with style to present list</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="GC">
+    <meta name="description" content="GC-img">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="2; http://google.com"> -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="print" href="css/print.css">
+    <link rel="icon" type="image/x-icon" href="img/icon.png">
+    <style>
+    table {
+        text-align: center;
+        border-collapse: collapse;
+    }
+    thead th {
+        background: grey;
+        color: white;
+    }
+    tbody th {
+        background: lightgrey;
+        color: white;
+    }
+    tfoot {
+        background: burlywood;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 5px;
+    }
+    caption {
+        padding: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <table>
+        <caption>SAO description</caption>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>main character</th>
+                <th>good or not</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <th>SAO</th>
+                <td>Kirito</td>
+                <td>goooooooooood!</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="3">Only self-opinion.</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>
