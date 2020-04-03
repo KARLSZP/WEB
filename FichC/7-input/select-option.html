@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Use fieldset</title>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="GC">
+        <meta name="description" content="GC-img">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <meta http-equiv="refresh" content="2; http://google.com"> -->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" media="print"
+            href="css/print.css">
+        <link rel="icon" type="image/x-icon" href="img/icon.png">
+    </head>
+
+    <body>
+        <fieldset>
+            <legend>Basic Info</legend>
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name"> <br> <br>
+            <label for="sex">Sex:
+                <select name="sex" id="sex">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </label>
+        </fieldset> <br>
+
+        <fieldset>
+            <legend>Detailed Info</legend>
+            <label for="chr">Chracter:
+                <select>
+                    <optgroup label="male">
+                        <option value="Kirito">Kirito</option>
+                        <option value="Yurio">Yurio</option>
+                    </optgroup>
+
+                    <optgroup label="female">
+                        <option value="Asuna">Asuna</option>
+                        <option value="Yui">Yui</option>
+                    </optgroup>
+                </select>
+            </label> <br> <br>
+            <label for="level">Love Level: </label>
+            <input type="text" name="level" id="level"> <br> <br>
+        </fieldset>
+    </body>
+
+</html>
