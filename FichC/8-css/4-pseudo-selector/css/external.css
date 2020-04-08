@@ -1,0 +1,14 @@
+h1 {
+    color: red;
+    text-align: center;
+}
+
+p {
+    color: aqua;
+    font-size: 14px;
+}
+
+a {
+    border: 2px black dashed;
+    padding: 5px;
+}

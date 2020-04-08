@@ -1,0 +1,21 @@
+body {
+    background-image: url(../img/img1.jpg);
+}
+
+h1 {
+    text-align: center;
+    color: yellow;
+}
+
+p {
+    text-indent: 32px;
+    font-size: 16px;
+    line-height: 32px;
+    color: black;
+}
+
+img {
+    position: absolute;
+    left: 50%;
+    margin-left: -181px;
+}

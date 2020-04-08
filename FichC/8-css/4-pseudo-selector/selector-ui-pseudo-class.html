@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>css</title>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="GC">
+        <meta name="description" content="GC-img">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <meta http-equiv="refresh" content="2; http://google.com"> -->
+        <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+        <!-- <link rel="stylesheet" type="text/css" media="print" -->
+        <!-- href="css/print.css"> -->
+        <link rel="icon" type="image/x-icon" href="img/icon.png">
+        <style type="text/css">
+            :enabled {
+                outline: 1px solid green;
+            }
+            :disabled {
+                background-color: #dddddd;
+            }
+        </style>
+    </head>
+
+    <body style="background-image: url(../img/img1.jpg);">
+        <form>
+            <p>
+                <label for="enabled">Enable</label>
+                <input type="text" name="enabled">
+            </p>
+            <p>
+                <label for="disabled">Disable</label>
+                <input type="text" name="disabled" disabled>
+            </p>
+            <button>Enabled</button>
+            <button disabled>Disabled</button>
+        </form>
+    </body>
+</html>
