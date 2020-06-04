@@ -1,0 +1,4 @@
+interface Alarm { 
+  void alarm(); 
+}
+
