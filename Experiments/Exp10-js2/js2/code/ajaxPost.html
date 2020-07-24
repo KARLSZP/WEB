@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AJAX-post</title>
+    <style>
+        p {
+            font-size: 20px
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ajax-post</h1>
+    <p>id：<input id="t1" type="text"></p>
+    <p>姓名：<input id="t2" type="text" onblur="callback();"></p>
+    <p><span id="t4"></span></p>
+    <script>
+        var xmlhttp = new XMLHttpRequest();
+
+        function callback() {
+            var t1 = document.getElementById("t1");
+            var t2 = document.getElementById("t2");
+            var url = "http://103.26.79.35:8080/jsp/post.jsp";
+            var param = "id=" + encodeURIComponent(t1.value) + "&name=" + encodeURIComponent(t2.value);
+            xmlhttp.open("post", url, false);
+            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xmlhttp.send(param);
+            document.getElementById("t4").innerHTML = xmlhttp.responseText;
+        }
+    </script>
+</body>
+
+</html>

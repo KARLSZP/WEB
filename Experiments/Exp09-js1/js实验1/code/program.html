@@ -1,0 +1,56 @@
+<!DOCTYPE  html>
+<html lang="zh-cn">
+
+<head>
+    <title>编程器</title>
+    <style>
+        span {
+            margin: 0 auto;
+        }
+        
+        input[type="text"] {
+            margin: 8px 2px auto;
+            width: 70px;
+        }
+        
+        textarea {
+            margin: 0 2px auto;
+            vertical-align: top;
+            text-align: unset;
+            width: 200px;
+            height: 160px;
+        }
+        
+        span.x,
+        span.y {
+            padding-left: 3em;
+        }
+        
+        #submit {
+            margin: 10px 0 0 4.5em;
+            width: 70px;
+        }
+    </style>
+    <script>
+        function func() {
+            var x = document.getElementById("x").value;
+            var y = document.getElementById("y").value;
+            var func_cnt = document.getElementById("func").value;
+            var new_func = new Function("x", "y", func_cnt);
+            new_func(x, y);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>编程器</h1>
+    <p>
+        <span class="x"><label>x:</label><input type="text" id="x"></span><br>
+        <span class="y"><label>y:</label><input type="text" id="y"></span><br><br>
+        <span class="f"><label>program:</label><textarea id="func"></textarea></span><br>
+        <input id="submit" type="button" value="运行" onclick="func();">
+
+    </p>
+</body>
+
+</html>

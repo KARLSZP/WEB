@@ -1,0 +1,48 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8">
+    <title>love</title>
+    <style>
+        .love {
+            position: relative;
+            left: 100px;
+        }
+        
+        .love:before {
+            content: "";
+            height: 0;
+            width: 0;
+            border-radius: 25px 25px 0 0;
+            border-width: 40px 25px 40px 25px;
+            border-color: red;
+            border-style: solid;
+            transform: rotate(45deg);
+            position: absolute;
+        }
+        
+        .love:after {
+            content: "";
+            height: 0;
+            width: 0;
+            border-radius: 25px 25px 0 0;
+            border-width: 40px 25px 40px 25px;
+            border-color: red;
+            border-style: solid;
+            transform: rotate(-45deg);
+            position: absolute;
+            left: -21px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="love">
+        <div class="love1"></div>
+        <div class="love2"></div>
+    </div>
+
+</body>
+
+</html>

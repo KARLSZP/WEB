@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Slider</title>
+
+    <style>
+        #slider {
+            top: 130px;
+            left: 100px;
+            padding: 0;
+            height: 300px;
+            width: 770px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .imgs {
+            position: absolute;
+            height: 300px;
+            width: 5000px;
+        }
+        
+        .img {
+            height: 300px;
+            float: left;
+        }
+        
+        .dot,
+        .arr {
+            position: absolute;
+        }
+        
+        #dot1 {
+            top: 410px;
+            left: 780px;
+            height: 12px;
+            width: 12px;
+            overflow: hidden;
+            position: absolute;
+        }
+        
+        #dot2 {
+            top: 410px;
+            left: 795px;
+            height: 12px;
+            width: 12px;
+            overflow: hidden;
+            position: absolute;
+        }
+        
+        #dot3 {
+            top: 410px;
+            left: 810px;
+            height: 12px;
+            width: 12px;
+            overflow: hidden;
+            position: absolute;
+        }
+        
+        #arr1 {
+            top: 250px;
+            left: 130px;
+            height: 80px;
+            width: 30px;
+            overflow: hidden;
+            position: absolute;
+        }
+        
+        #arr2 {
+            top: 250px;
+            left: 820px;
+            height: 80px;
+            width: 30px;
+            overflow: hidden;
+            position: absolute;
+        }
+        
+        #arr_2 {
+            top: -80px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="slider">
+        <div id="imgs" class="imgs">
+            <img id="img1" class="img" src="images/img1.jpg" alt="IMG1">
+            <img id="img2" class="img" src="images/img2.jpg" alt="IMG2">
+            <img id="img3" class="img" src="images/img3.jpg" alt="IMG3">
+            <img id="img1" class="img" src="images/img1.jpg" alt="IMG1">
+        </div>
+    </div>
+    <div id="dot1">
+        <img id="dot_1" class="dot" src="images/navigator.png" alt="nav">
+    </div>
+    <div id="dot2">
+        <img id="dot_2" class="dot" src="images/navigator.png" alt="nav">
+    </div>
+    <div id="dot3">
+        <img id="dot_3" class="dot" src="images/navigator.png" alt="nav">
+    </div>
+
+    <div id="arr1">
+        <img id="arr_1" class="arr" src="images/arrows-30.png" alt="arr">
+    </div>
+    <div id="arr2">
+        <img id="arr_2" class="arr" src="images/arrows-30.png" alt="arr">
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var id;
+    var flag = 1;
+    var bias = 0;
+    var maintain_time = 0;
+
+    var dot1 = document.getElementById("dot_1");
+    var dot2 = document.getElementById("dot_2");
+    var dot3 = document.getElementById("dot_3");
+    var arr1 = document.getElementById("arr_1");
+    var arr2 = document.getElementById("arr_2");
+    var img1 = document.getElementById("img1");
+    var img2 = document.getElementById("img2");
+    var img3 = document.getElementById("img3");
+
+    arr1.style.visibility = "hidden";
+    arr2.style.visibility = "hidden";
+
+    function choose(pos) {
+        if (pos == 1) {
+            dot1.style.top = -24 + "px";
+            dot2.style.top = 0 + "px";
+            dot3.style.top = 0 + "px";
+        } else if (pos == 2) {
+            dot1.style.top = 0 + "px";
+            dot2.style.top = -24 + "px";
+            dot3.style.top = 0 + "px";
+        } else {
+            dot1.style.top = 0 + "px";
+            dot2.style.top = 0 + "px";
+            dot3.style.top = -24 + "px";
+        }
+    }
+
+    function clock() {
+        if (bias != 0 && bias != -770 && bias != -1540 && bias != -2310) {
+            bias = bias - 5;
+        } else {
+            maintain_time = maintain_time + flag;
+        }
+
+        if (maintain_time == 80) {
+            bias = bias - 5;
+            maintain_time = 0;
+        }
+
+        if (bias == -2310) {
+            bias = 0;
+        }
+
+        if (bias == 0 || (bias < -1540 && bias >= -2310)) {
+            choose(1);
+        } else if (bias < -0 && bias >= -770) {
+            choose(2);
+        } else {
+            choose(3);
+        }
+
+        var imgs = document.getElementById("imgs");
+        imgs.style.left = bias + "px";
+        id = setTimeout(clock, 15);
+    }
+
+    clock();
+
+    var hander = function(event) {
+        switch (event.type) {
+            case "mouseover":
+                flag = 0;
+                document.getElementById("arr_1").style.visibility = "visible";
+                document.getElementById("arr_2").style.visibility = "visible";
+                break;
+            case "mouseout":
+                flag = 1;
+                document.getElementById("arr_1").style.visibility = "hidden";
+                document.getElementById("arr_2").style.visibility = "hidden";
+                break;
+        }
+    };
+
+
+    dot1.onclick = function() {
+        bias = 0;
+        choose(1);
+    };
+    dot2.onclick = function() {
+        bias = -770;
+        choose(2);
+    };
+    dot3.onclick = function() {
+        bias = -1540;
+        choose(3);
+    };
+
+    arr1.onclick = function() {
+        bias = bias + 770;
+        if (bias > 0) {
+            bias = -1540;
+        }
+        if (bias == 0 || (bias < -1540 && bias >= -2310)) {
+            choose(1);
+        } else if (bias < -0 && bias >= -770) {
+            choose(2);
+        } else {
+            choose(3);
+        }
+    };
+
+    arr2.onclick = function() {
+        bias = bias - 770;
+        if (bias < -2310) {
+            bias = 0;
+        }
+        if (bias == 0 || (bias < -1540 && bias >= -2310)) {
+            choose(1);
+        } else if (bias < -0 && bias >= -770) {
+            choose(2);
+        } else {
+            choose(3);
+        }
+    };
+    arr1.onmouseover = function() {
+        hander(event);
+    };
+    arr1.onmouseout = function() {
+        hander(event);
+    };
+    arr2.onmouseover = function() {
+        hander(event);
+    };
+    arr2.onmouseout = function() {
+        hander(event);
+    };
+    dot1.onmouseover = function() {
+        hander(event);
+    };
+    dot1.onmouseout = function() {
+        hander(event);
+    };
+    dot2.onmouseover = function() {
+        hander(event);
+    };
+    dot2.onmouseout = function() {
+        hander(event);
+    };
+    dot3.onmouseover = function() {
+        hander(event);
+    };
+    dot3.onmouseout = function() {
+        hander(event);
+    };
+    img1.onmouseover = function() {
+        hander(event);
+    }
+    img1.onmouseout = function() {
+        hander(event);
+    }
+    img2.onmouseover = function() {
+        hander(event);
+    };
+    img2.onmouseout = function() {
+        hander(event);
+    };
+    img3.onmouseover = function() {
+        hander(event);
+    };
+    img3.onmouseout = function() {
+        hander(event);
+    };
+</script>

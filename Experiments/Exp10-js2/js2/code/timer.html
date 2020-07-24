@@ -1,0 +1,135 @@
+<!DOCTYPE  html>
+<html lang="zh-cn">
+
+<head>
+    <title>计时器</title>
+    <style>
+        .time {
+            display: inline-block;
+            width: 3.6em;
+            text-align: right;
+            margin-right: 4px
+        }
+        
+        #container,
+        h1 {
+            width: 20em;
+            margin: 10px auto;
+            text-align: center
+        }
+        
+        .timer {
+            margin-top: 20px
+        }
+        
+        .pressed {
+            background: yellow
+        }
+        
+        ;
+    </style>
+    <script>
+        function baseTimer() {}
+        baseTimer.prototype.div = null;
+        baseTimer.prototype.input1 = null;
+        baseTimer.prototype.input2 = null;
+        baseTimer.prototype.input3 = null;
+        baseTimer.prototype.time = null;
+
+        baseTimer.prototype.init = function() {
+            this.div = document.createElement("div");
+            this.div.classList.add("timer");
+            this.div.classList.add("s0");
+            this.div.style.display = "inline-block";
+
+            var span = document.createElement("span");
+            span.classList.add("time");
+            this.time = document.createTextNode("0.00");
+            span.appendChild(this.time);
+            this.div.appendChild(span);
+
+            this.input1 = document.createElement("input");
+            this.input2 = document.createElement("input");
+            this.input3 = document.createElement("input");
+
+            this.input1.setAttribute("type", "button");
+            this.input2.setAttribute("type", "button");
+            this.input3.setAttribute("type", "button");
+
+            this.input1.setAttribute("value", "启动");
+            this.input2.setAttribute("value", "停止");
+            this.input3.setAttribute("value", "暂停");
+
+            this.input1.classList.add("start", "pressed");
+            this.input2.classList.add("stop");
+            this.input3.classList.add("pause");
+
+            var that = this;
+            this.input1.onclick = function() {
+                if (that.input1.classList.contains("pressed") == false) {
+                    that.input1.classList.add("pressed");
+                    if (that.input2.classList.contains("pressed")) {
+                        that.input2.classList.remove("pressed");
+
+                    } else if (that.input3.classList.contains("pressed")) {
+                        that.input3.classList.remove("pressed");
+                        that.time.nodeValue = "0.00";
+                    }
+                }
+            }
+            this.input2.onclick = function() {
+                if (that.input1.classList.contains("pressed")) {
+                    that.input1.classList.remove("pressed");
+                    that.input2.classList.add("pressed");
+                }
+            }
+
+            this.input3.onclick = function() {
+                if (that.input1.classList.contains("pressed")) {
+                    that.input1.classList.remove("pressed");
+                    that.input3.classList.add("pressed");
+                }
+            }
+
+            this.div.appendChild(this.input1);
+            this.div.appendChild(this.input2);
+            this.div.appendChild(this.input3);
+
+            document.getElementById("container").appendChild(document.createElement("br"));
+            document.getElementById("container").appendChild(this.div);
+        };
+
+
+
+
+        function addTimer() {
+            var timer = new baseTimer();
+            timer.init();
+            // alert(timer.input1.classList.contains("pressed"));
+            setInterval(() => {
+                // alert("1");
+                if (timer.input1.classList.contains("pressed")) {
+                    var t = timer.time.nodeValue;
+                    var s = parseFloat(t) + 0.01;
+                    timer.time.nodeValue = s.toFixed(2);
+                }
+            }, 10);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>计时器</h1>
+
+    <div id="container">
+        <input type="button" class="add" value="增加计时器(秒表)" onclick="addTimer();">
+        <div class="timer s0" style="display:none"><span class="time">0.00</span>
+            <input type="button" class="start pressed" value="启动">
+            <input type="button" class="stop" value="停止">
+            <input type="button" class="pause" value="暂停">
+        </div>
+    </div>
+
+</body>
+
+</html>

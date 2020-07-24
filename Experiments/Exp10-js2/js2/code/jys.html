@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>静夜思</title>
+    <style>
+        p {
+            font-size: 20px
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+<script>
+    var h1 = document.createElement('h1');
+    h1.appendChild(document.createTextNode("静夜思"));
+    document.body.appendChild(h1);
+
+    var p1 = document.createElement('p');
+    document.body.appendChild(p1);
+
+    var text1 = document.createTextNode("床前明月光");
+    var text2 = document.createTextNode("，疑是地上霜");
+    var text3 = document.createTextNode("。");
+    var text4 = document.createTextNode("(1)");
+    var upper1 = document.createElement('span');
+    upper1.appendChild(text4);
+    var style = document.createAttribute("style");
+    style.value = "vertical-align:super;font-size:12px";
+    upper1.setAttributeNode(style);
+
+    p1.appendChild(text1);
+    p1.appendChild(upper1);
+    p1.appendChild(text2);
+
+    var upper2 = upper1.cloneNode(true);
+    upper2.childNodes[0].nodeValue = "(2)";
+    p1.appendChild(upper2);
+    p1.appendChild(text3);
+
+    var p2 = p1.cloneNode(true);
+    p2.childNodes[0].nodeValue = "举头望明月";
+    p2.childNodes[1].childNodes[0].nodeValue = "(3)";
+    p2.childNodes[2].nodeValue = "，低头思故乡";
+    p2.childNodes[3].childNodes[0].nodeValue = "(4)";
+    document.body.appendChild(p2);
+</script>
+
+</html>
